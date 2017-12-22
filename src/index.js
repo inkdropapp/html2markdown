@@ -22,6 +22,12 @@ export default function HTML2Markdown (html: string): string {
         replacement (innerHTML) {
           return ''
         }
+      },
+      {
+        filter: ['pre'],
+        replacement (innerHTML) {
+          return '```\n' + stripTags(innerHTML) + '\n```\n'
+        }
       }
     ]
   })
@@ -39,4 +45,8 @@ function stripHTMLTagsFromMarkdown (value: string): string {
     })
     .use(require('remark-strip-html'))
   return remark().processSync(value).toString().trimRight()
+}
+
+function stripTags (v: string): string {
+  return v.replace(/<(?:.|\n)*?>/gm, '')
 }
