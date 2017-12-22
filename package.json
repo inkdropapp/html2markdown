@@ -1,0 +1,44 @@
+{
+  "name": "@craftzdog/html2markdown",
+  "version": "1.0.0",
+  "description": "Convert HTML to Markdown",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "ava",
+    "build": "babel src/ -d lib/",
+    "dev": "babel src/ -s -d lib/ --watch",
+    "lint": "eslint src test",
+    "flow": "flow check",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/pkpk/html2markdown.git"
+  },
+  "keywords": [
+    "remark",
+    "markdown",
+    "html"
+  ],
+  "files": [
+    "lib"
+  ],
+  "author": "Takuya Matsuyama <hi@craftz.dog>",
+  "license": "UNLICENSED",
+  "homepage": "https://bitbucket.org/pkpk/html2markdown#readme",
+  "dependencies": {
+    "remark-parse": "^4.0.0",
+    "remark-stringify": "^4.0.0",
+    "unified": "^6.1.6"
+  },
+  "devDependencies": {
+    "ava": "^0.24.0",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-flow": "^6.23.0",
+    "eslint": "^3.19.0",
+    "flow-bin": "^0.61.0",
+    "standard": "^10.0.3"
+  }
+}

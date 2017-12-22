@@ -1,0 +1,12 @@
+{
+  "presets": [
+    ["env", {
+      "targets": { "electron": "1.7.8" },
+      "useBuiltIns": "usage",
+      "debug": false
+    }],
+    "flow"
+  ],
+  "plugins": [
+  ]
+}
