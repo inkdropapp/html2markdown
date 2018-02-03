@@ -27,8 +27,8 @@
   "license": "UNLICENSED",
   "homepage": "https://bitbucket.org/pkpk/html2markdown#readme",
   "dependencies": {
-    "remark-parse": "^4.0.0",
-    "remark-stringify": "^4.0.0",
+    "remark-parse": "^5.0.0",
+    "remark-stringify": "^5.0.0",
     "remark-strip-html": "^1.0.0",
     "to-markdown": "^3.1.1",
     "unified": "^6.1.6"
