@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/pkpk/html2markdown.git"
+    "url": "git+ssh://git@github.com/craftzdog/html2markdown.git"
   },
   "keywords": [
     "remark",
@@ -25,7 +25,7 @@
   ],
   "author": "Takuya Matsuyama <hi@craftz.dog>",
   "license": "UNLICENSED",
-  "homepage": "https://bitbucket.org/pkpk/html2markdown#readme",
+  "homepage": "https://github.com/craftzdog/html2markdown",
   "dependencies": {
     "remark-parse": "^6.0.3",
     "remark-stringify": "^6.0.4",
