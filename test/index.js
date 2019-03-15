@@ -4,7 +4,19 @@ import html2markdown from '../lib/'
 
 test('convert html', t => {
   const html = `
-    <h1>title<h1>
+  <!doctype html>
+  <html>
+    <head>
+      <meta charset="UTF-8" />
+      <style>h1 { font-weight: bold; }</style>
+      <script type="text/javascript">
+        alert('hoge')
+      </script>
+    </head>
+    <body>
+      <h1>title<h1>
+    </body>
+  </html>
   `
   const md = html2markdown(html)
   t.is(typeof md, 'string')

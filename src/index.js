@@ -38,7 +38,18 @@ turndownService.addRule('inline-block', {
   }
 })
 turndownService.addRule('ignore', {
-  filter: ['input', 'form', 'iframe', 'canvas', 'embed', 'select', 'rt', 'wbr'],
+  filter: [
+    'input',
+    'form',
+    'iframe',
+    'canvas',
+    'embed',
+    'select',
+    'rt',
+    'wbr',
+    'style',
+    'script'
+  ],
   replacement(_innerHTML) {
     return ''
   }
