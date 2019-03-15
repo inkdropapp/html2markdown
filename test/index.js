@@ -1,6 +1,7 @@
 // @flow
 import test from 'ava'
 import html2markdown from '../lib/'
+import fs from 'fs'
 
 test('convert html', t => {
   const html = `
@@ -72,4 +73,44 @@ test('convert list', t => {
   const html = html2markdown(md)
   t.is(typeof html, 'string')
   t.is(html, '* list 1\n* list 2')
+})
+
+test('file 1', t => {
+  const md = fs.readFileSync(__dirname + '/test1.html', 'utf-8')
+  const html = html2markdown(md)
+  t.is(typeof html, 'string')
+  t.is(
+    html,
+    `# TOC test
+
+## Table of Contents
+
+## 日本語セクション
+
+あああ
+
+## foo
+
+\`\`\`
+function  hello  ()  {
+  console.log('hi');
+} 
+\`\`\`
+
+## bar
+
+\`\`\`
+function  hello  ()  {
+  console.log('wow');
+} 
+\`\`\`
+
+## pika
+
+\`\`\`
+function  hello  ()  {
+  console.log('pika!');
+} 
+\`\`\``
+  )
 })

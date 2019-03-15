@@ -50,7 +50,8 @@ turndownService.addRule('ignore', {
     'wbr',
     'style',
     'script',
-    'title'
+    'title',
+    'head'
   ],
   replacement(_innerHTML) {
     return ''
