@@ -3,6 +3,7 @@ import TurndownService from 'turndown'
 import { gfm } from 'turndown-plugin-gfm'
 
 const turndownService = new TurndownService()
+turndownService.use(gfm)
 turndownService.addRule('block', {
   filter: ['div', 'p', 'dt', 'dd', 'summary'],
   replacement(innerHTML) {
@@ -48,7 +49,8 @@ turndownService.addRule('ignore', {
     'rt',
     'wbr',
     'style',
-    'script'
+    'script',
+    'title'
   ],
   replacement(_innerHTML) {
     return ''
@@ -60,7 +62,6 @@ turndownService.addRule('code-block', {
     return '```\n' + stripTags(innerHTML) + '\n```\n'
   }
 })
-turndownService.use(gfm)
 
 export default function HTML2Markdown(html: string): string {
   const md = turndownService.turndown(html)

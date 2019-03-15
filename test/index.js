@@ -12,6 +12,7 @@ test('convert html', t => {
       <script type="text/javascript">
         alert('hoge')
       </script>
+      <title>page title</title>
     </head>
     <body>
       <h1>title<h1>
