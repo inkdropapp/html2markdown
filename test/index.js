@@ -114,3 +114,22 @@ function  hello  ()  {
 \`\`\``
   )
 })
+
+test('file 2', t => {
+  const md = fs.readFileSync(__dirname + '/test2.html', 'utf-8')
+  const html = html2markdown(md)
+  t.is(typeof html, 'string')
+  t.is(
+    html,
+    `hoge
+
+# 2019-08-29
+
+## 今日やったこと
+
+* Bash on Windowsを触る
+  * Windowsを最新版 1903 にアップデート
+
+## 明日どうするか`
+  )
+})

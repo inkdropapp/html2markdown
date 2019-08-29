@@ -48,12 +48,14 @@ turndownService.addRule('ignore', {
     'select',
     'rt',
     'wbr',
+    'head',
     'style',
     'script',
     'title',
     'head'
   ],
   replacement(_innerHTML) {
+    console.log('ignore:', _innerHTML)
     return ''
   }
 })
@@ -65,7 +67,7 @@ turndownService.addRule('code-block', {
 })
 
 export default function HTML2Markdown(html: string): string {
-  const md = turndownService.turndown(html)
+  const md = turndownService.turndown(html).trim()
   return stripHTMLTagsFromMarkdown(md)
 }
 
