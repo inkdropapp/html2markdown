@@ -27,25 +27,25 @@
   "license": "UNLICENSED",
   "homepage": "https://github.com/craftzdog/html2markdown",
   "dependencies": {
-    "remark-parse": "^6.0.3",
-    "remark-stringify": "^6.0.4",
+    "remark-parse": "^7.0.1",
+    "remark-stringify": "^7.0.3",
     "remark-strip-html": "^1.0.1",
     "turndown": "^5.0.3",
     "turndown-plugin-gfm": "^1.0.2",
-    "unified": "^7.1.0"
+    "unified": "^8.3.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.3.4",
-    "@babel/preset-env": "^7.3.4",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "@babel/preset-flow": "^7.0.0",
-    "ava": "^1.3.1",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.15.1",
-    "eslint-config-prettier": "^4.1.0",
-    "eslint-plugin-flowtype": "^3.4.2",
-    "eslint-plugin-prettier": "^3.0.1",
-    "flow-bin": "^0.94.0",
-    "prettier": "^1.16.4"
+    "ava": "^2.3.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.2.2",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-flowtype": "^4.2.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "flow-bin": "^0.106.2",
+    "prettier": "^1.18.2"
   }
 }
