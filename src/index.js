@@ -1,73 +1,80 @@
 // @flow
-import TurndownService from 'turndown'
-import { gfm } from 'turndown-plugin-gfm'
 
-const turndownService = new TurndownService()
-turndownService.use(gfm)
-turndownService.addRule('block', {
-  filter: ['div', 'p', 'dt', 'dd', 'summary'],
-  replacement(innerHTML) {
-    return '\n' + innerHTML + '\n'
-  }
-})
-turndownService.addRule('inline-block', {
-  filter: [
-    'font',
-    'span',
-    'article',
-    'section',
-    'nav',
-    'button',
-    'main',
-    'footer',
-    'header',
-    'aside',
-    'details',
-    'u',
-    'samp',
-    'var',
-    'kbd',
-    'legend',
-    'mark',
-    'output',
-    'small',
-    'sub',
-    'sup'
-  ],
-  replacement(innerHTML) {
-    return innerHTML
-  }
-})
-turndownService.addRule('ignore', {
-  filter: [
-    'input',
-    'form',
-    'iframe',
-    'canvas',
-    'embed',
-    'select',
-    'rt',
-    'wbr',
-    'head',
-    'style',
-    'script',
-    'title',
-    'head'
-  ],
-  replacement(_innerHTML) {
-    console.log('ignore:', _innerHTML)
-    return ''
-  }
-})
-turndownService.addRule('code-block', {
-  filter: ['pre'],
-  replacement(innerHTML) {
-    return '```\n' + stripTags(innerHTML) + '\n```\n'
-  }
-})
+let turndownService
+
+function getTurndownService() {
+  if (turndownService) return turndownService
+  const TurndownService = require('turndown')
+  const { gfm } = require('turndown-plugin-gfm')
+  turndownService = new TurndownService()
+  turndownService.use(gfm)
+  turndownService.addRule('block', {
+    filter: ['div', 'p', 'dt', 'dd', 'summary'],
+    replacement(innerHTML) {
+      return '\n' + innerHTML + '\n'
+    }
+  })
+  turndownService.addRule('inline-block', {
+    filter: [
+      'font',
+      'span',
+      'article',
+      'section',
+      'nav',
+      'button',
+      'main',
+      'footer',
+      'header',
+      'aside',
+      'details',
+      'u',
+      'samp',
+      'var',
+      'kbd',
+      'legend',
+      'mark',
+      'output',
+      'small',
+      'sub',
+      'sup'
+    ],
+    replacement(innerHTML) {
+      return innerHTML
+    }
+  })
+  turndownService.addRule('ignore', {
+    filter: [
+      'input',
+      'form',
+      'iframe',
+      'canvas',
+      'embed',
+      'select',
+      'rt',
+      'wbr',
+      'head',
+      'style',
+      'script',
+      'title',
+      'head'
+    ],
+    replacement(_innerHTML) {
+      console.log('ignore:', _innerHTML)
+      return ''
+    }
+  })
+  turndownService.addRule('code-block', {
+    filter: ['pre'],
+    replacement(innerHTML) {
+      return '```\n' + stripTags(innerHTML) + '\n```\n'
+    }
+  })
+  return turndownService
+}
 
 export default function HTML2Markdown(html: string): string {
-  const md = turndownService.turndown(html).trim()
+  const td = getTurndownService()
+  const md = td.turndown(html).trim()
   return stripHTMLTagsFromMarkdown(md)
 }
 
