@@ -31,7 +31,6 @@
     "rehype-remark": "^8.0.0",
     "remark-parse": "^8.0.3",
     "remark-stringify": "^8.1.1",
-    "remark-strip-html": "^1.0.1",
     "unified": "^9.0.0"
   },
   "devDependencies": {
