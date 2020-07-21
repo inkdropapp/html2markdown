@@ -126,7 +126,7 @@ test('file 2', t => {
 
     ## 今日やったこと
 
-    - \[x] Bash on Windowsを触る
+    - [x] Bash on Windowsを触る
 
       - Windowsを最新版 1903 にアップデート
 

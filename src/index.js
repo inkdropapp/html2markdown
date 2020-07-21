@@ -19,5 +19,11 @@ function getConverter(opts?: Object) {
 
 export default function HTML2Markdown(html: string, opts?: Object): string {
   const c = getConverter(opts)
-  return c.processSync(html).toString()
+  return (
+    c
+      .processSync(html)
+      .toString()
+      // unescape task list checkbox
+      .replace(/\\\[(x| )\]/g, '[$1]')
+  )
 }
