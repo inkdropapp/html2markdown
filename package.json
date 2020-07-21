@@ -1,6 +1,6 @@
 {
   "name": "@craftzdog/html2markdown",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "Convert HTML to Markdown",
   "main": "lib/index.js",
   "scripts": {
