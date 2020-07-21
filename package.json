@@ -27,12 +27,12 @@
   "license": "UNLICENSED",
   "homepage": "https://github.com/craftzdog/html2markdown",
   "dependencies": {
-    "remark-parse": "^7.0.1",
-    "remark-stringify": "^7.0.3",
+    "rehype-parse": "^7.0.1",
+    "rehype-remark": "^8.0.0",
+    "remark-parse": "^8.0.3",
+    "remark-stringify": "^8.1.1",
     "remark-strip-html": "^1.0.1",
-    "turndown": "^5.0.3",
-    "turndown-plugin-gfm": "^1.0.2",
-    "unified": "^8.3.2"
+    "unified": "^9.0.0"
   },
   "devDependencies": {
     "@ava/babel": "^1.0.1",
@@ -42,6 +42,7 @@
     "@babel/preset-flow": "^7.10.4",
     "ava": "^3.10.1",
     "babel-eslint": "^10.1.0",
+    "dedent": "^0.7.0",
     "eslint": "^7.5.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-flowtype": "^5.2.0",

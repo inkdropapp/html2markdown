@@ -2,9 +2,10 @@
 import test from 'ava'
 import html2markdown from '../lib/'
 import fs from 'fs'
+import dedent from 'dedent'
 
 test('convert html', t => {
-  const html = `
+  const html = dedent`
   <!doctype html>
   <html>
     <head>
@@ -16,13 +17,12 @@ test('convert html', t => {
       <title>page title</title>
     </head>
     <body>
-      <h1>title<h1>
+      <h1>title</h1>
     </body>
-  </html>
-  `
+  </html>`
   const md = html2markdown(html)
   t.is(typeof md, 'string')
-  t.is(md, '# title')
+  t.is(md, '# title\n')
 })
 
 test('convert code', t => {
@@ -31,48 +31,47 @@ test('convert code', t => {
   `
   const md = html2markdown(html)
   t.is(typeof md, 'string')
-  t.is(md, '```\ncode\n```')
+  t.is(md, '```\ncode\n```\n')
 })
 
 test('convert pre', t => {
   const html = `<pre>pre</pre>`
   const md = html2markdown(html)
   t.is(typeof md, 'string')
-  t.is(md, '```\npre\n```')
+  t.is(md, '```\npre\n```\n')
 })
 
 test('convert github code block', t => {
-  const html = `<pre style="word-break:normal;font-family:SFMono-Regular, Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace;box-sizing:border-box;margin-top:0px;word-wrap:normal;margin-bottom:0px;font-size:85%;padding:16px;overflow:auto;line-height:1.45;background-color:rgb(246, 248, 250);border-radius:3px;"><span style="box-sizing:border-box;color:rgb(215, 58, 73);">var</span> gpio <span style="box-sizing:border-box;color:rgb(215, 58, 73);">=</span> <span style="box-sizing:border-box;color:rgb(0, 92, 197);">require</span>(<span style="box-sizing:border-box;color:rgb(3, 47, 98);"><span style="box-sizing:border-box;color:rgb(3, 47, 98);">"</span><span style="box-sizing:border-box;"><a style="box-sizing:border-box;background-color:transparent;cursor:pointer;color:inherit;text-decoration:none;"><span style="box-sizing:border-box;">pi-gpio</span><span style="color:inherit;cursor:pointer;position:absolute;left:-4px;top:inherit;width:3px;transition:color 0.2s ease-out, color 450ms ease-in;"></span></a></span><span style="box-sizing:border-box;color:rgb(3, 47, 98);">"</span></span>);
-<span style="box-sizing:border-box;color:rgb(36, 41, 46);">gpio</span>.<span style="box-sizing:border-box;color:rgb(0, 92, 197);">open</span>(<span style="box-sizing:border-box;color:rgb(0, 92, 197);">16</span>, <span style="box-sizing:border-box;color:rgb(3, 47, 98);"><span style="box-sizing:border-box;color:rgb(3, 47, 98);">"</span>output<span style="box-sizing:border-box;color:rgb(3, 47, 98);">"</span></span>, <span style="box-sizing:border-box;color:rgb(215, 58, 73);">function</span>(<span style="box-sizing:border-box;color:rgb(36, 41, 46);">err</span>) {    <span style="box-sizing:border-box;color:rgb(106, 115, 125);"><span style="box-sizing:border-box;color:rgb(106, 115, 125);">//</span> Open pin 16 for output</span>
-  <span style="box-sizing:border-box;color:rgb(36, 41, 46);">gpio</span>.<span style="box-sizing:border-box;color:rgb(0, 92, 197);">write</span>(<span style="box-sizing:border-box;color:rgb(0, 92, 197);">16</span>, <span style="box-sizing:border-box;color:rgb(0, 92, 197);">1</span>, <span style="box-sizing:border-box;color:rgb(215, 58, 73);">function</span>() {    <span style="box-sizing:border-box;color:rgb(106, 115, 125);"><span style="box-sizing:border-box;color:rgb(106, 115, 125);">//</span> Set pin 16 high (1)</span>
-    <span style="box-sizing:border-box;color:rgb(36, 41, 46);">gpio</span>.<span style="box-sizing:border-box;color:rgb(0, 92, 197);">close</span>(<span style="box-sizing:border-box;color:rgb(0, 92, 197);">16</span>);            <span style="box-sizing:border-box;color:rgb(106, 115, 125);"><span style="box-sizing:border-box;color:rgb(106, 115, 125);">//</span> Close pin 16</span>
-  });
-});</pre>`
+  const html = dedent`<pre style="word-break:normal;font-family:SFMono-Regular, Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace;box-sizing:border-box;margin-top:0px;word-wrap:normal;margin-bottom:0px;font-size:85%;padding:16px;overflow:auto;line-height:1.45;background-color:rgb(246, 248, 250);border-radius:3px;"><span style="box-sizing:border-box;color:rgb(215, 58, 73);">var</span> gpio <span style="box-sizing:border-box;color:rgb(215, 58, 73);">=</span> <span style="box-sizing:border-box;color:rgb(0, 92, 197);">require</span>(<span style="box-sizing:border-box;color:rgb(3, 47, 98);"><span style="box-sizing:border-box;color:rgb(3, 47, 98);">"</span><span style="box-sizing:border-box;"><a style="box-sizing:border-box;background-color:transparent;cursor:pointer;color:inherit;text-decoration:none;"><span style="box-sizing:border-box;">pi-gpio</span><span style="color:inherit;cursor:pointer;position:absolute;left:-4px;top:inherit;width:3px;transition:color 0.2s ease-out, color 450ms ease-in;"></span></a></span><span style="box-sizing:border-box;color:rgb(3, 47, 98);">"</span></span>);
+    <span style="box-sizing:border-box;color:rgb(36, 41, 46);">gpio</span>.<span style="box-sizing:border-box;color:rgb(0, 92, 197);">open</span>(<span style="box-sizing:border-box;color:rgb(0, 92, 197);">16</span>, <span style="box-sizing:border-box;color:rgb(3, 47, 98);"><span style="box-sizing:border-box;color:rgb(3, 47, 98);">"</span>output<span style="box-sizing:border-box;color:rgb(3, 47, 98);">"</span></span>, <span style="box-sizing:border-box;color:rgb(215, 58, 73);">function</span>(<span style="box-sizing:border-box;color:rgb(36, 41, 46);">err</span>) {    <span style="box-sizing:border-box;color:rgb(106, 115, 125);"><span style="box-sizing:border-box;color:rgb(106, 115, 125);">//</span> Open pin 16 for output</span>
+      <span style="box-sizing:border-box;color:rgb(36, 41, 46);">gpio</span>.<span style="box-sizing:border-box;color:rgb(0, 92, 197);">write</span>(<span style="box-sizing:border-box;color:rgb(0, 92, 197);">16</span>, <span style="box-sizing:border-box;color:rgb(0, 92, 197);">1</span>, <span style="box-sizing:border-box;color:rgb(215, 58, 73);">function</span>() {    <span style="box-sizing:border-box;color:rgb(106, 115, 125);"><span style="box-sizing:border-box;color:rgb(106, 115, 125);">//</span> Set pin 16 high (1)</span>
+        <span style="box-sizing:border-box;color:rgb(36, 41, 46);">gpio</span>.<span style="box-sizing:border-box;color:rgb(0, 92, 197);">close</span>(<span style="box-sizing:border-box;color:rgb(0, 92, 197);">16</span>);            <span style="box-sizing:border-box;color:rgb(106, 115, 125);"><span style="box-sizing:border-box;color:rgb(106, 115, 125);">//</span> Close pin 16</span>
+      });
+    });</pre>`
   const md = html2markdown(html)
   t.is(typeof md, 'string')
   t.is(
     md,
-    `\`\`\`
-var gpio \\= require("pi-gpio");
-gpio.open(16, "output", function(err) {    // Open pin 16 for output
-  gpio.write(16, 1, function() {    // Set pin 16 high (1)
-    gpio.close(16);            // Close pin 16
-  });
-});
-\`\`\``
+    dedent`\`\`\`
+    var gpio = require("pi-gpio");
+    gpio.open(16, "output", function(err) {    // Open pin 16 for output
+      gpio.write(16, 1, function() {    // Set pin 16 high (1)
+        gpio.close(16);            // Close pin 16
+      });
+    });
+    \`\`\`\n`
   )
 })
 
 test('convert list', t => {
-  const md = `
+  const html = dedent`
     <ul>
       <li>list 1</li>
       <li>list 2</li>
-    </ul>
-  `
-  const html = html2markdown(md)
-  t.is(typeof html, 'string')
-  t.is(html, '* list 1\n* list 2')
+    </ul>`
+  const md = html2markdown(html)
+  t.is(typeof md, 'string')
+  t.is(md, '- list 1\n- list 2\n')
 })
 
 test('file 1', t => {
@@ -81,55 +80,56 @@ test('file 1', t => {
   t.is(typeof html, 'string')
   t.is(
     html,
-    `# TOC test
+    dedent`# TOC test
 
-## Table of Contents
+    ## Table of Contents
 
-## 日本語セクション
+    ## 日本語セクション
 
-あああ
+    あああ
 
-## foo
+    ## foo
 
-\`\`\`
-function  hello  ()  {
-  console.log('hi');
-} 
-\`\`\`
+    \`\`\`
+    function hello () {
+      console.log('hi');
+    }
+    \`\`\`
 
-## bar
+    ## bar
 
-\`\`\`
-function  hello  ()  {
-  console.log('wow');
-} 
-\`\`\`
+    \`\`\`
+    function hello () {
+      console.log('wow');
+    }
+    \`\`\`
 
-## pika
+    ## pika
 
-\`\`\`
-function  hello  ()  {
-  console.log('pika!');
-} 
-\`\`\``
+    \`\`\`
+    function hello () {
+      console.log('pika!');
+    }
+    \`\`\`\n`
   )
 })
 
 test('file 2', t => {
-  const md = fs.readFileSync(__dirname + '/test2.html', 'utf-8')
-  const html = html2markdown(md)
-  t.is(typeof html, 'string')
+  const html = fs.readFileSync(__dirname + '/test2.html', 'utf-8')
+  const md = html2markdown(html)
+  t.is(typeof md, 'string')
   t.is(
-    html,
-    `hoge
+    md,
+    dedent`hoge
 
-# 2019-08-29
+    # 2019-08-29
 
-## 今日やったこと
+    ## 今日やったこと
 
-* Bash on Windowsを触る
-  * Windowsを最新版 1903 にアップデート
+    - \[x] Bash on Windowsを触る
 
-## 明日どうするか`
+      - Windowsを最新版 1903 にアップデート
+
+    ## 明日どうするか\n`
   )
 })
