@@ -133,3 +133,11 @@ test('file 2', t => {
     ## 明日どうするか\n`
   )
 })
+
+test('file 3', t => {
+  const html = fs.readFileSync(__dirname + '/test3.html', 'utf-8')
+  const md = html2markdown(html)
+  t.log(md)
+  t.is(typeof md, 'string')
+  t.is(md, `test1\n`)
+})
