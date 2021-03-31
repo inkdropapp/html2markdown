@@ -1,6 +1,9 @@
 // @flow
+import hardBreak from './hard-break'
 
 function getConverter(opts?: Object) {
+  const { toMdast: toMdastOptions = {}, stringify: stringifyOptions = {} } =
+    opts || {}
   var unified = require('unified')
   var parse = require('rehype-parse')
   var rehype2remark = require('rehype-remark')
@@ -8,13 +11,16 @@ function getConverter(opts?: Object) {
 
   return unified()
     .use(parse)
-    .use(rehype2remark)
+    .use(rehype2remark, toMdastOptions)
     .use(stringify, {
       listItemIndent: '1',
       bullet: '*',
       commonmark: true,
       fences: true,
-      ...(opts || {})
+      handlers: {
+        break: hardBreak
+      },
+      ...stringifyOptions
     })
 }
 

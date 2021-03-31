@@ -27,11 +27,11 @@ test('convert html', t => {
 
 test('convert code', t => {
   const html = `
-    <pre><code>code</code></pre>
+    <pre><code>code\ncode</code></pre>
   `
   const md = html2markdown(html)
   t.is(typeof md, 'string')
-  t.is(md, '```\ncode\n```\n')
+  t.is(md, '```\ncode\ncode\n```\n')
 })
 
 test('convert pre', t => {
@@ -39,6 +39,13 @@ test('convert pre', t => {
   const md = html2markdown(html)
   t.is(typeof md, 'string')
   t.is(md, '```\npre\n```\n')
+})
+
+test('newlines', t => {
+  const html = `line1<br />line2<br />line3`
+  const md = html2markdown(html)
+  t.is(typeof md, 'string')
+  t.is(md, 'line1  \nline2  \nline3\n')
 })
 
 test('convert github code block', t => {
