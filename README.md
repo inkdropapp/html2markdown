@@ -5,7 +5,7 @@ It converts HTML to Markdown using [remark][] and [rehype][].
 ## install
 
 ```sh
-npm install @craftzdog/html2markdown
+npm install @inkdropapp/html2markdown
 ```
 
 ## How to use
@@ -20,7 +20,7 @@ And our script, `example.js`, looks as follows:
 
 ```js
 var fs = require("fs");
-var html2markdown = require("@craftzdog/html2markdown");
+var html2markdown = require("@inkdropapp/html2markdown");
 
 var doc = fs.readFileSync("example.md");
 
