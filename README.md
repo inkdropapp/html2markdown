@@ -46,7 +46,13 @@ Converts the given HTML to Markdown.
 - `options.toMdast` — The options for [hast-util-to-mdast][]
 - `options.stringify` — The formatting options for [mdast-util-to-markdown][]
 
+## License
+
+[MIT][license] © [Takuya Matsuyama][author]
+
 [remark]: https://github.com/remarkjs/remark
 [rehype]: https://github.com/rehypejs/rehype
 [hast-util-to-mdast]: https://github.com/syntax-tree/hast-util-to-mdast
 [mdast-util-to-markdown]: https://github.com/syntax-tree/mdast-util-to-markdown#formatting-options
+[license]: LICENSE
+[author]: https://www.craftz.dog/
