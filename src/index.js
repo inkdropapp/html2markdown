@@ -11,6 +11,7 @@ function getConverter(opts?: Object) {
     .use(rehype2remark)
     .use(stringify, {
       listItemIndent: '1',
+      bullet: '*',
       commonmark: true,
       fences: true,
       ...(opts || {})

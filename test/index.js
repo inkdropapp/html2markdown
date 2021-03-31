@@ -71,7 +71,7 @@ test('convert list', t => {
     </ul>`
   const md = html2markdown(html)
   t.is(typeof md, 'string')
-  t.is(md, '- list 1\n- list 2\n')
+  t.is(md, '* list 1\n* list 2\n')
 })
 
 test('file 1', t => {
@@ -126,9 +126,9 @@ test('file 2', t => {
 
     ## 今日やったこと
 
-    - [x] Bash on Windowsを触る
+    * [x] Bash on Windowsを触る
 
-      - Windowsを最新版 1903 にアップデート
+      * Windowsを最新版 1903 にアップデート
 
     ## 明日どうするか\n`
   )
