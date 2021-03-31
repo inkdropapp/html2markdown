@@ -140,3 +140,13 @@ test('file 2', t => {
     ## 明日どうするか\n`
   )
 })
+
+test('relative link', t => {
+  const html = `
+    <base href='https://www.craftz.dog/'>
+    <a href='about'>link</a>
+  `
+  const md = html2markdown(html)
+  t.is(typeof md, 'string')
+  t.is(md, '[link](https://www.craftz.dog/about)\n')
+})
