@@ -1,5 +1,5 @@
 {
-  "name": "@craftzdog/html2markdown",
+  "name": "@inkdropapp/html2markdown",
   "version": "2.3.2",
   "description": "Convert HTML to Markdown using remark and rehype",
   "main": "lib/index.js",
