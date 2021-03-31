@@ -1,7 +1,12 @@
 // @flow
 import hardBreak from './hard-break'
 
-function getConverter(opts?: Object) {
+type Options = {
+  toMdast?: Object,
+  stringify?: Object
+}
+
+function getConverter(opts?: Options) {
   const { toMdast: toMdastOptions = {}, stringify: stringifyOptions = {} } =
     opts || {}
   var unified = require('unified')
@@ -24,7 +29,7 @@ function getConverter(opts?: Object) {
     })
 }
 
-export default function HTML2Markdown(html: string, opts?: Object): string {
+export default function HTML2Markdown(html: string, opts?: Options): string {
   const c = getConverter(opts)
   return (
     c
