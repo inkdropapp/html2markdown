@@ -13,10 +13,12 @@ function getConverter(opts?: Options) {
   var parse = require('rehype-parse')
   var rehype2remark = require('rehype-remark')
   var stringify = require('remark-stringify')
+  var squeezeLinks = require('remark-squeeze-links')
 
   return unified()
     .use(parse)
     .use(rehype2remark, toMdastOptions)
+    .use(squeezeLinks)
     .use(stringify, {
       listItemIndent: '1',
       bullet: '*',
