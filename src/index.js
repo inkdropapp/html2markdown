@@ -1,5 +1,6 @@
 // @flow
 import hardBreak from './hard-break'
+import toMdastCodeBlock from './to-mdast-code-block'
 
 type Options = {
   toMdast?: Object,
@@ -14,10 +15,18 @@ function getConverter(opts?: Options) {
   var rehype2remark = require('rehype-remark')
   var stringify = require('remark-stringify')
   var squeezeLinks = require('remark-squeeze-links')
+  var gfm = require('mdast-util-gfm/to-markdown')
 
   return unified()
+    .data('toMarkdownExtensions', [gfm()])
     .use(parse)
-    .use(rehype2remark, toMdastOptions)
+    .use(rehype2remark, {
+      handlers: {
+        pre: toMdastCodeBlock,
+        ...(toMdastOptions.handlers || {})
+      },
+      ...toMdastOptions
+    })
     .use(squeezeLinks)
     .use(stringify, {
       listItemIndent: '1',
@@ -25,7 +34,8 @@ function getConverter(opts?: Options) {
       commonmark: true,
       fences: true,
       handlers: {
-        break: hardBreak
+        break: hardBreak,
+        ...(stringifyOptions.handlers || {})
       },
       ...stringifyOptions
     })
