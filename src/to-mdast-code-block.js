@@ -6,7 +6,7 @@ var toText = require('hast-util-to-text')
 var trim = require('trim-trailing-lines')
 var wrapText = require('hast-util-to-mdast/lib/util/wrap-text')
 
-var prefixes = ['language-', 'highlight-source-']
+var prefixes = ['language-', 'lang-', 'highlight-source-']
 
 var isPre = convert('pre')
 var isCode = convert('code')
@@ -14,11 +14,15 @@ var isCode = convert('code')
 function code(h, node, parent) {
   var children = node.children
   var index = -1
-  var classList = parent.properties.className || []
+  var classList = []
   var lang
 
   if (isPre(node)) {
     lang = node.properties.lang || null
+    classList = [
+      ...(parent.properties.className || []),
+      ...(node.properties.className || [])
+    ]
     while (++index < children.length) {
       if (isCode(children[index]) && has(children[index], 'className')) {
         classList = classList.concat(children[index].properties.className)
