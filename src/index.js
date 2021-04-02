@@ -14,17 +14,33 @@ function getConverter(opts?: Options) {
     stringify: stringifyOptions = {},
     baseURI = null
   } = opts || {}
+
   const unified = require('unified')
-  const parse = require('rehype-parse')
+  const rehypeParse = require('rehype-parse')
   const rehype2remark = require('rehype-remark')
+  const rehypeInsert = require('./rehype-insert')
   const stringify = require('remark-stringify')
   const squeezeLinks = require('remark-squeeze-links')
-  const fixRelativeURIs = require('remark-fix-relative-uris')
   const gfm = require('mdast-util-gfm/to-markdown')
 
   const remark = unified()
     .data('toMarkdownExtensions', [gfm()])
-    .use(parse)
+    .use(rehypeParse)
+    .use(rehypeInsert, {
+      insertions: baseURI
+        ? [
+            {
+              selector: 'head',
+              insert: {
+                type: 'element',
+                tagName: 'base',
+                properties: { href: baseURI },
+                children: []
+              }
+            }
+          ]
+        : []
+    })
     .use(rehype2remark, {
       handlers: {
         pre: toMdastCodeBlock,
@@ -32,7 +48,6 @@ function getConverter(opts?: Options) {
       },
       ...toMdastOptions
     })
-  if (baseURI) remark.use(fixRelativeURIs, { baseURI })
   return remark.use(squeezeLinks).use(stringify, {
     listItemIndent: '1',
     bullet: '*',

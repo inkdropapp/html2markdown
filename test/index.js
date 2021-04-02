@@ -209,10 +209,14 @@ test('file 2', t => {
 test('relative link', t => {
   const html = `
     <a href='about'>link</a>
+    <img src='me.jpg' />
   `
   const md = html2markdown(html, { baseURI: 'https://www.craftz.dog/' })
   t.is(typeof md, 'string')
-  t.is(md, '[link](https://www.craftz.dog/about)\n')
+  t.is(
+    md,
+    '[link](https://www.craftz.dog/about) ![](https://www.craftz.dog/me.jpg)\n'
+  )
 })
 
 test('table', t => {
