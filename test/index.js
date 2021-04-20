@@ -244,3 +244,14 @@ test('table', t => {
   `
   )
 })
+
+test('ignore comments', t => {
+  const html = `
+    hello
+    <!-- this is a comment -->
+    world
+  `
+  const md = html2markdown(html)
+  t.is(typeof md, 'string')
+  t.is(md, 'hello world\n')
+})
