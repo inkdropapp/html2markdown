@@ -1,6 +1,7 @@
 // @flow
 import hardBreak from './hard-break'
 import toMdastCodeBlock from './to-mdast-code-block'
+import toMdastComment from './to-mdast-comment'
 
 type Options = {
   toMdast?: Object,
@@ -44,6 +45,7 @@ function getConverter(opts?: Options) {
     .use(rehype2remark, {
       handlers: {
         pre: toMdastCodeBlock,
+        comment: toMdastComment,
         ...(toMdastOptions.handlers || {})
       },
       ...toMdastOptions
