@@ -1,11 +1,9 @@
-// @flow
 import hardBreak from './hard-break'
 import toMdastCodeBlock from './to-mdast-code-block'
 import toMdastComment from './to-mdast-comment'
-
 type Options = {
-  toMdast?: Object,
-  stringify?: Object,
+  toMdast?: Record<string, any>
+  stringify?: Record<string, any>
   baseURI?: string
 }
 
@@ -23,7 +21,6 @@ function getConverter(opts?: Options) {
   const stringify = require('remark-stringify')
   const squeezeLinks = require('remark-squeeze-links')
   const gfm = require('mdast-util-gfm/to-markdown')
-
   const remark = unified()
     .data('toMarkdownExtensions', [gfm()])
     .use(rehypeParse)
@@ -35,7 +32,9 @@ function getConverter(opts?: Options) {
               insert: {
                 type: 'element',
                 tagName: 'base',
-                properties: { href: baseURI },
+                properties: {
+                  href: baseURI
+                },
                 children: []
               }
             }
@@ -65,11 +64,8 @@ function getConverter(opts?: Options) {
 
 export default function HTML2Markdown(html: string, opts?: Options): string {
   const c = getConverter(opts)
-  return (
-    c
-      .processSync(html)
-      .toString()
-      // unescape task list checkbox
-      .replace(/\\\[(x| )\]/g, '[$1]')
-  )
+  return c
+    .processSync(html)
+    .toString() // unescape task list checkbox
+    .replace(/\\\[(x| )\]/g, '[$1]')
 }

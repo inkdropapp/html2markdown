@@ -1,10 +1,8 @@
-// @flow
-import test from 'ava'
 import html2markdown from '../lib/'
 import fs from 'fs'
 import dedent from 'dedent'
 
-test('convert html', t => {
+test('convert html', () => {
   const html = dedent`
   <!doctype html>
   <html>
@@ -21,66 +19,54 @@ test('convert html', t => {
     </body>
   </html>`
   const md = html2markdown(html)
-  t.is(typeof md, 'string')
-  t.is(md, '# title\n')
+  expect(typeof md).toBe('string')
+  expect(md).toBe('# title\n')
 })
-
-test('convert code', t => {
+test('convert code', () => {
   const html = `
     <pre><code>code\ncode</code></pre>
   `
   const md = html2markdown(html)
-  t.is(typeof md, 'string')
-  t.is(md, '```\ncode\ncode\n```\n')
+  expect(typeof md).toBe('string')
+  expect(md).toBe('```\ncode\ncode\n```\n')
 })
-
-test('convert pre', t => {
+test('convert pre', () => {
   const html = `<pre>pre</pre>`
   const md = html2markdown(html)
-  t.is(typeof md, 'string')
-  t.is(md, '```\npre\n```\n')
+  expect(typeof md).toBe('string')
+  expect(md).toBe('```\npre\n```\n')
 })
-
-test('newlines', t => {
+test('newlines', () => {
   const html = `line1<br />line2<br />line3`
   const md = html2markdown(html)
-  t.is(typeof md, 'string')
-  t.is(md, 'line1  \nline2  \nline3\n')
+  expect(typeof md).toBe('string')
+  expect(md).toBe('line1  \nline2  \nline3\n')
 })
-
-test('convert github code block', t => {
+test('convert github code block', () => {
   const html = dedent`<div class="highlight highlight-source-shell"><pre>npm install mdast-squeeze-links</pre></div>`
   const md = html2markdown(html)
-  t.is(typeof md, 'string')
-  t.is(
-    md,
-    dedent`\`\`\`shell
+  expect(typeof md).toBe('string')
+  expect(md).toBe(dedent`\`\`\`shell
     npm install mdast-squeeze-links
-    \`\`\`\n`
-  )
+    \`\`\`\n`)
 })
-
-test('convert gitlab code block', t => {
+test('convert gitlab code block', () => {
   const html = dedent`<pre class="code highlight js-syntax-highlight shell white" lang="shell" v-pre="true"><code><span id="LC1" class="line" lang="shell"><span class="nb">mkdir </span>build</span>
     <span id="LC2" class="line" lang="shell"><span class="nb">cd </span>build</span>
     <span id="LC3" class="line" lang="shell">cmake ..</span>
     <span id="LC4" class="line" lang="shell">make</span>
     <span id="LC5" class="line" lang="shell">make <span class="nb">install</span></span></code></pre>`
   const md = html2markdown(html)
-  t.is(typeof md, 'string')
-  t.is(
-    md,
-    dedent`\`\`\`shell
+  expect(typeof md).toBe('string')
+  expect(md).toBe(dedent`\`\`\`shell
     mkdir build
     cd build
     cmake ..
     make
     make install
-    \`\`\`\n`
-  )
+    \`\`\`\n`)
 })
-
-test('convert highlightjs code block', t => {
+test('convert highlightjs code block', () => {
   const html = dedent`<pre class="lang-html s-code-block hljs xml"><code><span class="hljs-meta">&lt;!doctype <span class="hljs-meta-keyword">html</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
@@ -105,10 +91,8 @@ test('convert highlightjs code block', t => {
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </code></pre>`
   const md = html2markdown(html)
-  t.is(typeof md, 'string')
-  t.is(
-    md,
-    dedent`\`\`\`html
+  expect(typeof md).toBe('string')
+  expect(md).toBe(dedent`\`\`\`html
     <!doctype html>
     <html>
     <head>
@@ -131,28 +115,23 @@ test('convert highlightjs code block', t => {
         <p id="text"></p>
     </body>
     </html>
-    \`\`\`\n`
-  )
+    \`\`\`\n`)
 })
-
-test('convert list', t => {
+test('convert list', () => {
   const html = dedent`
     <ul>
       <li>list 1</li>
       <li>list 2</li>
     </ul>`
   const md = html2markdown(html)
-  t.is(typeof md, 'string')
-  t.is(md, '* list 1\n* list 2\n')
+  expect(typeof md).toBe('string')
+  expect(md).toBe('* list 1\n* list 2\n')
 })
-
-test('file 1', t => {
+test('file 1', () => {
   const md = fs.readFileSync(__dirname + '/test1.html', 'utf-8')
   const html = html2markdown(md)
-  t.is(typeof html, 'string')
-  t.is(
-    html,
-    dedent`# TOC test
+  expect(typeof html).toBe('string')
+  expect(html).toBe(dedent`# TOC test
 
     ## Table of Contents
 
@@ -182,17 +161,13 @@ test('file 1', t => {
     function hello () {
       console.log('pika!');
     }
-    \`\`\`\n`
-  )
+    \`\`\`\n`)
 })
-
-test('file 2', t => {
+test('file 2', () => {
   const html = fs.readFileSync(__dirname + '/test2.html', 'utf-8')
   const md = html2markdown(html)
-  t.is(typeof md, 'string')
-  t.is(
-    md,
-    dedent`hoge
+  expect(typeof md).toBe('string')
+  expect(md).toBe(dedent`hoge
 
     # 2019-08-29
 
@@ -202,24 +177,22 @@ test('file 2', t => {
 
       * Windowsを最新版 1903 にアップデート
 
-    ## 明日どうするか\n`
-  )
+    ## 明日どうするか\n`)
 })
-
-test('relative link', t => {
+test('relative link', () => {
   const html = `
     <a href='about'>link</a>
     <img src='me.jpg' />
   `
-  const md = html2markdown(html, { baseURI: 'https://www.craftz.dog/' })
-  t.is(typeof md, 'string')
-  t.is(
-    md,
+  const md = html2markdown(html, {
+    baseURI: 'https://www.craftz.dog/'
+  })
+  expect(typeof md).toBe('string')
+  expect(md).toBe(
     '[link](https://www.craftz.dog/about) ![](https://www.craftz.dog/me.jpg)\n'
   )
 })
-
-test('table', t => {
+test('table', () => {
   const html = dedent`
     <table>
       <thead>
@@ -235,23 +208,19 @@ test('table', t => {
     </table>
   `
   const md = html2markdown(html)
-  t.is(typeof md, 'string')
-  t.is(
-    md,
-    dedent`| header 1 |
+  expect(typeof md).toBe('string')
+  expect(md).toBe(dedent`| header 1 |
     | -------- |
     | column 1 |\n
-  `
-  )
+  `)
 })
-
-test('ignore comments', t => {
+test('ignore comments', () => {
   const html = `
     hello
     <!-- this is a comment -->
     world
   `
   const md = html2markdown(html)
-  t.is(typeof md, 'string')
-  t.is(md, 'hello world\n')
+  expect(typeof md).toBe('string')
+  expect(md).toBe('hello world\n')
 })
