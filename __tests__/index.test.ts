@@ -1,4 +1,4 @@
-import html2markdown from '../lib/'
+import { html2Markdown } from '../src/'
 import fs from 'fs'
 import dedent from 'dedent'
 
@@ -18,7 +18,7 @@ test('convert html', () => {
       <h1>title</h1>
     </body>
   </html>`
-  const md = html2markdown(html)
+  const md = html2Markdown(html)
   expect(typeof md).toBe('string')
   expect(md).toBe('# title\n')
 })
@@ -26,25 +26,25 @@ test('convert code', () => {
   const html = `
     <pre><code>code\ncode</code></pre>
   `
-  const md = html2markdown(html)
+  const md = html2Markdown(html)
   expect(typeof md).toBe('string')
   expect(md).toBe('```\ncode\ncode\n```\n')
 })
 test('convert pre', () => {
   const html = `<pre>pre</pre>`
-  const md = html2markdown(html)
+  const md = html2Markdown(html)
   expect(typeof md).toBe('string')
   expect(md).toBe('```\npre\n```\n')
 })
 test('newlines', () => {
   const html = `line1<br />line2<br />line3`
-  const md = html2markdown(html)
+  const md = html2Markdown(html)
   expect(typeof md).toBe('string')
   expect(md).toBe('line1  \nline2  \nline3\n')
 })
 test('convert github code block', () => {
   const html = dedent`<div class="highlight highlight-source-shell"><pre>npm install mdast-squeeze-links</pre></div>`
-  const md = html2markdown(html)
+  const md = html2Markdown(html)
   expect(typeof md).toBe('string')
   expect(md).toBe(dedent`\`\`\`shell
     npm install mdast-squeeze-links
@@ -56,7 +56,7 @@ test('convert gitlab code block', () => {
     <span id="LC3" class="line" lang="shell">cmake ..</span>
     <span id="LC4" class="line" lang="shell">make</span>
     <span id="LC5" class="line" lang="shell">make <span class="nb">install</span></span></code></pre>`
-  const md = html2markdown(html)
+  const md = html2Markdown(html)
   expect(typeof md).toBe('string')
   expect(md).toBe(dedent`\`\`\`shell
     mkdir build
@@ -90,7 +90,7 @@ test('convert highlightjs code block', () => {
     <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </code></pre>`
-  const md = html2markdown(html)
+  const md = html2Markdown(html)
   expect(typeof md).toBe('string')
   expect(md).toBe(dedent`\`\`\`html
     <!doctype html>
@@ -123,13 +123,13 @@ test('convert list', () => {
       <li>list 1</li>
       <li>list 2</li>
     </ul>`
-  const md = html2markdown(html)
+  const md = html2Markdown(html)
   expect(typeof md).toBe('string')
   expect(md).toBe('* list 1\n* list 2\n')
 })
 test('file 1', () => {
   const md = fs.readFileSync(__dirname + '/test1.html', 'utf-8')
-  const html = html2markdown(md)
+  const html = html2Markdown(md)
   expect(typeof html).toBe('string')
   expect(html).toBe(dedent`# TOC test
 
@@ -165,7 +165,7 @@ test('file 1', () => {
 })
 test('file 2', () => {
   const html = fs.readFileSync(__dirname + '/test2.html', 'utf-8')
-  const md = html2markdown(html)
+  const md = html2Markdown(html)
   expect(typeof md).toBe('string')
   expect(md).toBe(dedent`hoge
 
@@ -184,7 +184,7 @@ test('relative link', () => {
     <a href='about'>link</a>
     <img src='me.jpg' />
   `
-  const md = html2markdown(html, {
+  const md = html2Markdown(html, {
     baseURI: 'https://www.craftz.dog/'
   })
   expect(typeof md).toBe('string')
@@ -207,7 +207,7 @@ test('table', () => {
       </tbdoy>
     </table>
   `
-  const md = html2markdown(html)
+  const md = html2Markdown(html)
   expect(typeof md).toBe('string')
   expect(md).toBe(dedent`| header 1 |
     | -------- |
@@ -220,7 +220,7 @@ test('ignore comments', () => {
     <!-- this is a comment -->
     world
   `
-  const md = html2markdown(html)
+  const md = html2Markdown(html)
   expect(typeof md).toBe('string')
   expect(md).toBe('hello world\n')
 })
