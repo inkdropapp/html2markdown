@@ -1,6 +1,6 @@
 {
   "name": "@inkdropapp/html2markdown",
-  "version": "2.6.5",
+  "version": "3.0.0",
   "description": "Convert HTML to Markdown using remark and rehype",
   "main": "src/index.ts",
   "scripts": {
