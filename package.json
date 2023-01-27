@@ -33,7 +33,6 @@
     "unified": "^10.1.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.20.7",
     "@types/dedent": "^0.7.0",
     "@types/jest": "^29.4.0",
     "@typescript-eslint/eslint-plugin": "^5.49.0",
