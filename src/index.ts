@@ -1,9 +1,19 @@
-import hardBreak from './hard-break'
-import toMdastCodeBlock from './to-mdast-code-block'
-import toMdastComment from './to-mdast-comment'
-type Options = {
-  toMdast?: Record<string, any>
-  stringify?: Record<string, any>
+import { hardBreak } from './hard-break'
+import { code as toMdastCodeBlock } from './to-mdast-code-block'
+import { comment as toMdastComment } from './to-mdast-comment'
+
+import { unified } from 'unified'
+import rehypeParse from 'rehype-parse'
+import rehype2remark from 'rehype-remark'
+import { rehypeInsert } from './rehype-insert'
+import stringify, { Options as RemarkStringifyOptions } from 'remark-stringify'
+import { squeezeLinks } from 'remark-squeeze-links'
+import { gfmToMarkdown } from 'mdast-util-gfm'
+import { Options as ToMdastOptions } from 'hast-util-to-mdast'
+
+export type Options = {
+  toMdast?: ToMdastOptions
+  stringify?: RemarkStringifyOptions
   baseURI?: string
 }
 
@@ -14,15 +24,8 @@ function getConverter(opts?: Options) {
     baseURI = null
   } = opts || {}
 
-  const unified = require('unified')
-  const rehypeParse = require('rehype-parse')
-  const rehype2remark = require('rehype-remark')
-  const rehypeInsert = require('./rehype-insert')
-  const stringify = require('remark-stringify')
-  const squeezeLinks = require('remark-squeeze-links')
-  const gfm = require('mdast-util-gfm/to-markdown')
   const remark = unified()
-    .data('toMarkdownExtensions', [gfm()])
+    .data('toMarkdownExtensions', [gfmToMarkdown()])
     .use(rehypeParse)
     .use(rehypeInsert, {
       insertions: baseURI
@@ -50,9 +53,8 @@ function getConverter(opts?: Options) {
       ...toMdastOptions
     })
   return remark.use(squeezeLinks).use(stringify, {
-    listItemIndent: '1',
+    listItemIndent: 'one',
     bullet: '*',
-    commonmark: true,
     fences: true,
     handlers: {
       break: hardBreak,
@@ -62,7 +64,7 @@ function getConverter(opts?: Options) {
   })
 }
 
-export default function HTML2Markdown(html: string, opts?: Options): string {
+export function html2Markdown(html: string, opts?: Options): string {
   const c = getConverter(opts)
   return c
     .processSync(html)

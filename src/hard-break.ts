@@ -1,9 +1,8 @@
-export default hardBreak
+import { Handle } from 'mdast-util-to-markdown'
+import { patternInScope } from 'mdast-util-to-markdown/lib/util/pattern-in-scope'
 
-const patternInScope = require('mdast-util-to-markdown/lib/util/pattern-in-scope')
-
-function hardBreak(node, _, context, safe) {
-  var index = -1
+export const hardBreak: Handle = (_node, _, context, safe) => {
+  let index = -1
 
   while (++index < context.unsafe.length) {
     // If we can't put eols in this construct (setext headings, tables), use a
