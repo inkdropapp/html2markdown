@@ -19,14 +19,14 @@ Say we have the following markdown file, `example.md`:
 And our script, `example.js`, looks as follows:
 
 ```js
-var fs = require("fs");
-var html2markdown = require("@inkdropapp/html2markdown");
+import { html2Markdown } from '@inkdropapp/html2markdown'
+import fs from 'fs'
 
-var doc = fs.readFileSync("example.md");
+const doc = fs.readFileSync('example.md')
 
-var md = html2markdown(doc);
+const md = html2markdown(doc)
 
-console.log(md);
+console.log(md)
 ```
 
 Now, running `node example` yields:
