@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
+    "outDir": "lib",
     "module": "esnext",
     "lib": ["dom", "esnext"],
     "esModuleInterop": true,
     "sourceMap": true,
     "strict": true,
     "declaration": true,
-    "declarationDir": ".",
+    "declarationMap": true,
+    "declarationDir": "lib",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "noImplicitAny": false,
