@@ -24,7 +24,7 @@ import fs from 'fs'
 
 const doc = fs.readFileSync('example.md')
 
-const md = html2markdown(doc)
+const md = html2Markdown(doc)
 
 console.log(md)
 ```
@@ -37,7 +37,7 @@ Now, running `node example` yields:
 
 ## API
 
-### `html2markdown(html, options)`
+### `html2Markdown(html, options)`
 
 Converts the given HTML to Markdown.
 
