@@ -1,6 +1,10 @@
 import { html2Markdown } from '../src/'
 import fs from 'fs'
 import dedent from 'dedent'
+import path from 'path'
+import { fileURLToPath } from 'url'
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 test('convert html', () => {
   const html = dedent`

@@ -1,9 +1,9 @@
-module.exports = {
+export default {
   preset: 'ts-jest',
   transform: {
     // '^.+\\.[tj]sx?$' to process js/ts with `ts-jest`
     // '^.+\\.m?[tj]sx?$' to process js/ts/mjs/mts with `ts-jest`
-    '^.+\\.[tj]sx?$': [
+    '^.+\\.tsx?$': [
       'ts-jest',
       {
         useESM: true
@@ -12,6 +12,6 @@ module.exports = {
   },
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-  transformIgnorePatterns: [],
+  transformIgnorePatterns: ['.*\\.js'],
   extensionsToTreatAsEsm: ['.ts']
 }
