@@ -5,9 +5,9 @@
   "type": "module",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "unpkg": "lib/index.umd.js",
   "scripts": {
-    "build": "tsc",
-    "_build": "rollup --bundleConfigAsCjs -c",
+    "build": "rollup --bundleConfigAsCjs -c",
     "lint": "eslint src __tests__ && tsc --noEmit",
     "format": "prettier . -w --loglevel warn",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --config jest.config.js",

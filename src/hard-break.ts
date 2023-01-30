@@ -1,5 +1,5 @@
 import { Handle } from 'mdast-util-to-markdown'
-import { patternInScope } from 'mdast-util-to-markdown/lib/util/pattern-in-scope'
+import { patternInScope } from 'mdast-util-to-markdown/lib/util/pattern-in-scope.js'
 
 export const hardBreak: Handle = (_node, _, context, safe) => {
   let index = -1

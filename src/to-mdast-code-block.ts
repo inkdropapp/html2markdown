@@ -2,7 +2,7 @@ import { hasProperty } from 'hast-util-has-property'
 import { isElement, convertElement } from 'hast-util-is-element'
 import { toText } from 'hast-util-to-text'
 import { trimTrailingLines } from 'trim-trailing-lines'
-import { wrapText } from 'hast-util-to-mdast/lib/util/wrap-text'
+import { wrapText } from 'hast-util-to-mdast/lib/util/wrap-text.js'
 import { Handle } from 'hast-util-to-mdast'
 
 const prefixes = ['language-', 'lang-', 'highlight-source-']
