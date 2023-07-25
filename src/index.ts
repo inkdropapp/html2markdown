@@ -4,12 +4,15 @@ import { comment as toMdastComment } from './to-mdast-comment'
 
 import { unified } from 'unified'
 import rehypeParse from 'rehype-parse'
-import rehype2remark from 'rehype-remark'
+import { rehype2remark } from './rehype-remark'
 import { rehypeInsertBaseURI } from './rehype-insert-base-uri'
 import stringify, { Options as RemarkStringifyOptions } from 'remark-stringify'
 import { squeezeLinks } from 'remark-squeeze-links'
 import { gfmToMarkdown } from 'mdast-util-gfm'
-import { Options as ToMdastOptions } from 'hast-util-to-mdast'
+
+import { toMdast, Options as ToMdastOptions } from 'hast-util-to-mdast'
+
+import type { Root as HastRoot } from 'hast'
 
 export type Options = {
   toMdast?: ToMdastOptions
@@ -17,7 +20,18 @@ export type Options = {
   baseURI?: string
 }
 
-function getConverter(opts?: Options) {
+export const convertHastToMdast = (root: HastRoot, options: ToMdastOptions) => {
+  return toMdast(root, {
+    handlers: {
+      pre: toMdastCodeBlock as any,
+      comment: toMdastComment,
+      ...(options.handlers || {})
+    },
+    ...options
+  })
+}
+
+function getHtml2MarkdownProcessor(opts?: Options) {
   const {
     toMdast: toMdastOptions = {},
     stringify: stringifyOptions = {},
@@ -33,7 +47,7 @@ function getConverter(opts?: Options) {
     remark
       .use(rehype2remark, {
         handlers: {
-          pre: toMdastCodeBlock,
+          pre: toMdastCodeBlock as any,
           comment: toMdastComment,
           ...(toMdastOptions.handlers || {})
         },
@@ -55,7 +69,7 @@ function getConverter(opts?: Options) {
 }
 
 export function html2Markdown(html: string, opts?: Options): string {
-  const c = getConverter(opts)
+  const c = getHtml2MarkdownProcessor(opts)
   return c
     .processSync(html)
     .toString() // unescape task list checkbox

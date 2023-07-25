@@ -26,9 +26,9 @@
   "license": "MIT",
   "homepage": "https://github.com/inkdropapp/html2markdown",
   "dependencies": {
+    "hast-util-to-mdast": "^9.0.0",
     "mdast-util-gfm": "^3.0.0",
     "rehype-parse": "^8.0.4",
-    "rehype-remark": "^9.1.2",
     "remark-squeeze-links": "^1.0.2",
     "remark-stringify": "^10.0.3",
     "unified": "^10.1.2"
