@@ -52,6 +52,7 @@ function getConverter(opts?: Options) {
       },
       ...toMdastOptions
     })
+  // @ts-ignore
   return remark.use(squeezeLinks).use(stringify, {
     listItemIndent: 'one',
     bullet: '*',
