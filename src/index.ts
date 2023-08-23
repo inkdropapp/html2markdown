@@ -6,7 +6,10 @@ import { unified } from 'unified'
 import rehypeParse from 'rehype-parse'
 import rehype2remark from 'rehype-remark'
 import { rehypeInsertBaseURI } from './rehype-insert-base-uri'
-import stringify, { Options as RemarkStringifyOptions } from 'remark-stringify'
+import {
+  remarkStringify,
+  Options as RemarkStringifyOptions
+} from './remark-stringify'
 import { squeezeLinks } from 'remark-squeeze-links'
 import { gfmToMarkdown } from 'mdast-util-gfm'
 import { Options as ToMdastOptions } from 'hast-util-to-mdast'
@@ -41,9 +44,9 @@ function getConverter(opts?: Options) {
       })
       .use(squeezeLinks)
       // @ts-ignore
-      .use(stringify, {
+      .use(remarkStringify, {
         listItemIndent: 'one',
-        bullet: '*',
+        bullet: '-',
         fences: true,
         handlers: {
           break: hardBreak,

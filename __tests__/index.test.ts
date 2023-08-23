@@ -129,7 +129,7 @@ test('convert list', () => {
     </ul>`
   const md = html2Markdown(html)
   expect(typeof md).toBe('string')
-  expect(md).toBe('* list 1\n* list 2\n')
+  expect(md).toBe('- list 1\n- list 2\n')
 })
 test('file 1', () => {
   const md = fs.readFileSync(__dirname + '/test1.html', 'utf-8')
@@ -177,9 +177,9 @@ test('file 2', () => {
 
     ## 今日やったこと
 
-    * [x] Bash on Windowsを触る
+    - [x] Bash on Windowsを触る
 
-      * Windowsを最新版 1903 にアップデート
+      - Windowsを最新版 1903 にアップデート
 
     ## 明日どうするか\n`)
 })
@@ -227,4 +227,12 @@ test('ignore comments', () => {
   const md = html2Markdown(html)
   expect(typeof md).toBe('string')
   expect(md).toBe('hello world\n')
+})
+test('file 3', () => {
+  const html = fs.readFileSync(__dirname + '/test3.html', 'utf-8')
+  const md = html2Markdown(html)
+  expect(typeof md).toBe('string')
+  expect(md).toBe(
+    'Adds a user to the guild, provided you have a valid oauth2 access token for the user with the `guilds.join` scope. Returns a 201 Created with the [guild member](https://discord.com/developers/docs/resources/guild#guild-member-object) as the body, or 204 No Content if the user is already a member of the guild. Fires a [Guild Member Add](https://discord.com/developers/docs/topics/gateway-events#guild-member-add) Gateway event.\n'
+  )
 })
