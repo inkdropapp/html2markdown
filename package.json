@@ -1,6 +1,6 @@
 {
   "name": "@inkdropapp/html2markdown",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "Convert HTML to Markdown using remark and rehype",
   "type": "module",
   "main": "lib/index.esm.js",
@@ -28,10 +28,10 @@
   "dependencies": {
     "mdast-util-gfm": "^3.0.0",
     "mdast-util-to-markdown": "^2.1.0",
-    "rehype-parse": "^8.0.5",
-    "rehype-remark": "^9.1.2",
+    "rehype-parse": "^9.0.0",
+    "rehype-remark": "^10.0.0",
     "remark-squeeze-links": "^1.0.2",
-    "unified": "^10.1.2"
+    "unified": "^11.0.4"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.1.0",
