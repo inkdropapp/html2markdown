@@ -1,6 +1,6 @@
 {
   "name": "@inkdropapp/html2markdown",
-  "version": "3.2.1",
+  "version": "4.0.0",
   "description": "Convert HTML to Markdown using remark and rehype",
   "type": "module",
   "main": "lib/index.esm.js",
