@@ -1,17 +1,16 @@
-import { Processor, Plugin, CompilerFunction } from 'unified'
+import { Processor, Plugin, Compiler } from 'unified'
 import { Options as ToMarkdownOptions } from 'mdast-util-to-markdown'
-import { Root, Content } from 'mdast'
+import { Root, RootContent } from 'mdast'
 import { toMarkdown } from 'mdast-util-to-markdown'
 
-type Node = Root | Content
+type Node = Root | RootContent
 export type Options = Omit<ToMarkdownOptions, 'extensions'>
 
 export function remarkStringify(
   this: Processor,
   options: Plugin<[Options?] | void[], Node, string>
 ) {
-  // @ts-ignore
-  const compiler: CompilerFunction<Node, string> = tree => {
+  const compiler: Compiler<Node, string> = tree => {
     // Assume options.
     const settings = this.data('settings') as Options
 
@@ -21,6 +20,7 @@ export function remarkStringify(
         // Note: this option is not in the readme.
         // The goal is for it to be set by plugins on `data` instead of being
         // passed by users.
+        // @ts-ignore
         extensions: (this.data('toMarkdownExtensions') ||
           []) as ToMarkdownOptions['extensions']
       })

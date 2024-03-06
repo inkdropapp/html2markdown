@@ -1,4 +1,4 @@
-import { html2Markdown } from '../src/'
+import { html2Markdown, parseMarkdown } from '../src/'
 import fs from 'fs'
 import dedent from 'dedent'
 import path from 'path'
@@ -178,7 +178,6 @@ test('file 2', () => {
     ## 今日やったこと
 
     - [x] Bash on Windowsを触る
-
       - Windowsを最新版 1903 にアップデート
 
     ## 明日どうするか\n`)
@@ -224,6 +223,7 @@ test('ignore comments', () => {
     <!-- this is a comment -->
     world
   `
+  const p = parseMarkdown(html)
   const md = html2Markdown(html)
   expect(typeof md).toBe('string')
   expect(md).toBe('hello world\n')
