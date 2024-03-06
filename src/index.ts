@@ -70,7 +70,7 @@ export function html2Markdown(html: string, opts?: Options): string {
     .replace(/\\\[(x| )\]/g, '[$1]')
 }
 
-export function parseMarkdown(html: string): string {
+export function parseMarkdown(html: string): HastRoot {
   const c = getConverter()
   return c.parse(html)
 }

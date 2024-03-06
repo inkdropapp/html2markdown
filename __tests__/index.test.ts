@@ -1,4 +1,4 @@
-import { html2Markdown, parseMarkdown } from '../src/'
+import { html2Markdown } from '../src/'
 import fs from 'fs'
 import dedent from 'dedent'
 import path from 'path'
@@ -223,7 +223,6 @@ test('ignore comments', () => {
     <!-- this is a comment -->
     world
   `
-  const p = parseMarkdown(html)
   const md = html2Markdown(html)
   expect(typeof md).toBe('string')
   expect(md).toBe('hello world\n')
