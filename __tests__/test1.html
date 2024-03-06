@@ -3,180 +3,198 @@
   <head>
     <meta charset="UTF-8" />
     <title>TOC test</title>
-    <style source-path="/Users/nora/Library/Application Support/inkdrop-dev/dev/packages/flowchart/styles/markdown-flowchart.less" priority="0">.markdown-flowchart {
-  white-space: normal;
-}
-.mde-preview.print .markdown-flowchart svg {
-  max-width: 100%;
-}
-</style><style source-path="/Users/nora/Developments/local/inkdrop/inkdrop-desktop/packages/github-preview/styles/github-markdown-dark.less" context="inkdrop-preview" priority="1">body[class*="dark-ui"] .mde-preview {
-  color: rgba(255, 255, 255, 0.7);
-}
-body[class*="dark-ui"] .mde-preview a {
-  background-color: transparent;
-}
-body[class*="dark-ui"] .mde-preview img {
-  border: 0;
-}
-body[class*="dark-ui"] .mde-preview input {
-  color: inherit;
-}
-body[class*="dark-ui"] .mde-preview a {
-  color: #6987AF;
-}
-body[class*="dark-ui"] .mde-preview h1,
-body[class*="dark-ui"] .mde-preview h2,
-body[class*="dark-ui"] .mde-preview h3,
-body[class*="dark-ui"] .mde-preview h4,
-body[class*="dark-ui"] .mde-preview h5,
-body[class*="dark-ui"] .mde-preview h6 {
-  color: rgba(255, 255, 255, 0.875);
-}
-body[class*="dark-ui"] .mde-preview h6 {
-  color: rgba(255, 255, 255, 0.625);
-}
-body[class*="dark-ui"] .mde-preview h1,
-body[class*="dark-ui"] .mde-preview h2 {
-  border-bottom-color: rgba(255, 255, 255, 0.4);
-}
-body[class*="dark-ui"] .mde-preview hr {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-body[class*="dark-ui"] .mde-preview blockquote {
-  color: rgba(255, 255, 255, 0.4);
-  border-left: 4px solid rgba(255, 255, 255, 0.3);
-}
-body[class*="dark-ui"] .mde-preview table th {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-body[class*="dark-ui"] .mde-preview table th,
-body[class*="dark-ui"] .mde-preview table td {
-  border: 1px solid rgba(255, 255, 255, 0.25);
-}
-body[class*="dark-ui"] .mde-preview table tr {
-  background-color: transparent;
-  border-top: 1px solid rgba(255, 255, 255, 0.25);
-}
-body[class*="dark-ui"] .mde-preview table tr:nth-child(2n) {
-  background-color: rgba(255, 255, 255, 0.05);
-}
-body[class*="dark-ui"] .mde-preview img {
-  background-color: transparent;
-}
-body[class*="dark-ui"] .mde-preview .highlight pre,
-body[class*="dark-ui"] .mde-preview pre {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-body[class*="dark-ui"] .mde-preview .cm-header {
-  color: #ffcc66;
-}
-body[class*="dark-ui"] .mde-preview .cm-quote {
-  color: #969896;
-  font-style: italic;
-}
-body[class*="dark-ui"] .mde-preview .cm-negative {
-  color: #d44;
-}
-body[class*="dark-ui"] .mde-preview .cm-positive {
-  color: #292;
-}
-body[class*="dark-ui"] .mde-preview .cm-header,
-body[class*="dark-ui"] .mde-preview .cm-strong {
-  font-weight: bold;
-}
-body[class*="dark-ui"] .mde-preview .cm-em {
-  font-style: italic;
-}
-body[class*="dark-ui"] .mde-preview .cm-link {
-  text-decoration: underline;
-}
-body[class*="dark-ui"] .mde-preview .cm-strikethrough {
-  text-decoration: line-through;
-}
-body[class*="dark-ui"] .mde-preview .cm-keyword {
-  color: #cc99cc;
-  font-weight: normal;
-}
-body[class*="dark-ui"] .mde-preview .cm-atom {
-  color: #8abeb7;
-}
-body[class*="dark-ui"] .mde-preview .cm-number {
-  color: #f99157;
-}
-body[class*="dark-ui"] .mde-preview .cm-def {
-  color: #b5bd68;
-}
-body[class*="dark-ui"] .mde-preview .cm-property {
-  color: #b5bd68;
-}
-body[class*="dark-ui"] .mde-preview .cm-operator {
-  color: #cc99cc;
-}
-body[class*="dark-ui"] .mde-preview .cm-variable-2 {
-  color: #4A664A;
-}
-body[class*="dark-ui"] .mde-preview .cm-variable-3,
-body[class*="dark-ui"] .mde-preview .cm-type {
-  color: rgba(255, 255, 255, 0.8);
-}
-body[class*="dark-ui"] .mde-preview .cm-comment {
-  color: #969896;
-  font-style: italic;
-}
-body[class*="dark-ui"] .mde-preview .cm-string {
-  color: #8abeb7;
-}
-body[class*="dark-ui"] .mde-preview .cm-string-2 {
-  color: #8abeb7;
-}
-body[class*="dark-ui"] .mde-preview .cm-meta {
-  color: #f99157;
-}
-body[class*="dark-ui"] .mde-preview .cm-qualifier {
-  color: #555;
-}
-body[class*="dark-ui"] .mde-preview .cm-builtin {
-  color: #8abeb7;
-}
-body[class*="dark-ui"] .mde-preview .cm-bracket {
-  color: #f99157;
-}
-body[class*="dark-ui"] .mde-preview .cm-tag {
-  color: #a54543;
-}
-body[class*="dark-ui"] .mde-preview .cm-attribute {
-  color: #fda331;
-}
-body[class*="dark-ui"] .mde-preview .cm-hr {
-  color: #999;
-}
-body[class*="dark-ui"] .mde-preview .cm-link {
-  color: #f99157;
-}
-body[class*="dark-ui"] .mde-preview .cm-error {
-  color: #f00;
-}
-</style>
+    <style
+      source-path="/Users/nora/Library/Application Support/inkdrop-dev/dev/packages/flowchart/styles/markdown-flowchart.less"
+      priority="0"
+    >
+      .markdown-flowchart {
+        white-space: normal;
+      }
+      .mde-preview.print .markdown-flowchart svg {
+        max-width: 100%;
+      }
+    </style>
+    <style
+      source-path="/Users/nora/Developments/local/inkdrop/inkdrop-desktop/packages/github-preview/styles/github-markdown-dark.less"
+      context="inkdrop-preview"
+      priority="1"
+    >
+      body[class*='dark-ui'] .mde-preview {
+        color: rgba(255, 255, 255, 0.7);
+      }
+      body[class*='dark-ui'] .mde-preview a {
+        background-color: transparent;
+      }
+      body[class*='dark-ui'] .mde-preview img {
+        border: 0;
+      }
+      body[class*='dark-ui'] .mde-preview input {
+        color: inherit;
+      }
+      body[class*='dark-ui'] .mde-preview a {
+        color: #6987af;
+      }
+      body[class*='dark-ui'] .mde-preview h1,
+      body[class*='dark-ui'] .mde-preview h2,
+      body[class*='dark-ui'] .mde-preview h3,
+      body[class*='dark-ui'] .mde-preview h4,
+      body[class*='dark-ui'] .mde-preview h5,
+      body[class*='dark-ui'] .mde-preview h6 {
+        color: rgba(255, 255, 255, 0.875);
+      }
+      body[class*='dark-ui'] .mde-preview h6 {
+        color: rgba(255, 255, 255, 0.625);
+      }
+      body[class*='dark-ui'] .mde-preview h1,
+      body[class*='dark-ui'] .mde-preview h2 {
+        border-bottom-color: rgba(255, 255, 255, 0.4);
+      }
+      body[class*='dark-ui'] .mde-preview hr {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+      body[class*='dark-ui'] .mde-preview blockquote {
+        color: rgba(255, 255, 255, 0.4);
+        border-left: 4px solid rgba(255, 255, 255, 0.3);
+      }
+      body[class*='dark-ui'] .mde-preview table th {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      body[class*='dark-ui'] .mde-preview table th,
+      body[class*='dark-ui'] .mde-preview table td {
+        border: 1px solid rgba(255, 255, 255, 0.25);
+      }
+      body[class*='dark-ui'] .mde-preview table tr {
+        background-color: transparent;
+        border-top: 1px solid rgba(255, 255, 255, 0.25);
+      }
+      body[class*='dark-ui'] .mde-preview table tr:nth-child(2n) {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+      body[class*='dark-ui'] .mde-preview img {
+        background-color: transparent;
+      }
+      body[class*='dark-ui'] .mde-preview .highlight pre,
+      body[class*='dark-ui'] .mde-preview pre {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+      body[class*='dark-ui'] .mde-preview .cm-header {
+        color: #ffcc66;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-quote {
+        color: #969896;
+        font-style: italic;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-negative {
+        color: #d44;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-positive {
+        color: #292;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-header,
+      body[class*='dark-ui'] .mde-preview .cm-strong {
+        font-weight: bold;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-em {
+        font-style: italic;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-link {
+        text-decoration: underline;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-strikethrough {
+        text-decoration: line-through;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-keyword {
+        color: #cc99cc;
+        font-weight: normal;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-atom {
+        color: #8abeb7;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-number {
+        color: #f99157;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-def {
+        color: #b5bd68;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-property {
+        color: #b5bd68;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-operator {
+        color: #cc99cc;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-variable-2 {
+        color: #4a664a;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-variable-3,
+      body[class*='dark-ui'] .mde-preview .cm-type {
+        color: rgba(255, 255, 255, 0.8);
+      }
+      body[class*='dark-ui'] .mde-preview .cm-comment {
+        color: #969896;
+        font-style: italic;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-string {
+        color: #8abeb7;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-string-2 {
+        color: #8abeb7;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-meta {
+        color: #f99157;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-qualifier {
+        color: #555;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-builtin {
+        color: #8abeb7;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-bracket {
+        color: #f99157;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-tag {
+        color: #a54543;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-attribute {
+        color: #fda331;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-hr {
+        color: #999;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-link {
+        color: #f99157;
+      }
+      body[class*='dark-ui'] .mde-preview .cm-error {
+        color: #f00;
+      }
+    </style>
   </head>
   <body class="mde-preview">
-    <div><h1 class="line-1">TOC test</h1>
-<h2 class="line-2">Table of Contents</h2>
-<h2 class="line-4">日本語セクション</h2>
-<p class="line-6">あああ</p>
-<h2 class="line-8">foo</h2>
-<pre class="line-10"><code class="inline cm-s-default"><span class="cm-keyword">function</span><span class=""> </span><span class="cm-def">hello</span><span class=""> </span><span class="">()</span><span class=""> </span><span class="">{
+    <div>
+      <h1 class="line-1">TOC test</h1>
+      <h2 class="line-2">Table of Contents</h2>
+      <h2 class="line-4">日本語セクション</h2>
+      <p class="line-6">あああ</p>
+      <h2 class="line-8">foo</h2>
+      <pre
+        class="line-10"
+      ><code class="inline cm-s-default"><span class="cm-keyword">function</span><span class=""> </span><span class="cm-def">hello</span><span class=""> </span><span class="">()</span><span class=""> </span><span class="">{
 </span><span class="">  </span><span class="cm-variable">console</span><span class="">.</span><span class="cm-property">log</span><span class="">(</span><span class="cm-string">'hi'</span><span class="">);
 }
 </span></code></pre>
-<h2 class="line-16">bar</h2>
-<pre class="line-18"><code class="inline cm-s-default"><span class="cm-keyword">function</span><span class=""> </span><span class="cm-def">hello</span><span class=""> </span><span class="">()</span><span class=""> </span><span class="">{
+      <h2 class="line-16">bar</h2>
+      <pre
+        class="line-18"
+      ><code class="inline cm-s-default"><span class="cm-keyword">function</span><span class=""> </span><span class="cm-def">hello</span><span class=""> </span><span class="">()</span><span class=""> </span><span class="">{
 </span><span class="">  </span><span class="cm-variable">console</span><span class="">.</span><span class="cm-property">log</span><span class="">(</span><span class="cm-string">'wow'</span><span class="">);
 }
 </span></code></pre>
-<h2 class="line-24">pika</h2>
-<pre class="line-26"><code class="inline cm-s-default"><span class="cm-keyword">function</span><span class=""> </span><span class="cm-def">hello</span><span class=""> </span><span class="">()</span><span class=""> </span><span class="">{
+      <h2 class="line-24">pika</h2>
+      <pre
+        class="line-26"
+      ><code class="inline cm-s-default"><span class="cm-keyword">function</span><span class=""> </span><span class="cm-def">hello</span><span class=""> </span><span class="">()</span><span class=""> </span><span class="">{
 </span><span class="">  </span><span class="cm-variable">console</span><span class="">.</span><span class="cm-property">log</span><span class="">(</span><span class="cm-string">'pika!'</span><span class="">);
 }
-</span></code></pre></div>
+</span></code></pre>
+    </div>
   </body>
 </html>
