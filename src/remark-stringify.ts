@@ -1,16 +1,23 @@
-import { Processor, Plugin, Compiler } from 'unified'
+import { Plugin, Compiler } from 'unified'
 import { Options as ToMarkdownOptions } from 'mdast-util-to-markdown'
-import { Root, RootContent } from 'mdast'
+import { Root } from 'mdast'
 import { toMarkdown } from 'mdast-util-to-markdown'
 
-type Node = Root | RootContent
+type Processor = import('unified').Processor<
+  undefined,
+  undefined,
+  undefined,
+  Root,
+  string
+>
+
 export type Options = Omit<ToMarkdownOptions, 'extensions'>
 
 export function remarkStringify(
   this: Processor,
-  options: Plugin<[Options?] | void[], Node, string>
+  options: Plugin<[Options?] | void[], Root, string>
 ) {
-  const compiler: Compiler<Node, string> = tree => {
+  const compiler: Compiler<Root, string> = tree => {
     // Assume options.
     const settings = this.data('settings') as Options
 
@@ -27,5 +34,5 @@ export function remarkStringify(
     )
   }
 
-  Object.assign(this, { Compiler: compiler })
+  this.compiler = compiler
 }
