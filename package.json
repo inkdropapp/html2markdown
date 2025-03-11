@@ -26,12 +26,12 @@
   "license": "MIT",
   "homepage": "https://github.com/inkdropapp/html2markdown",
   "dependencies": {
-    "mdast-util-gfm": "^3.0.0",
-    "mdast-util-to-markdown": "^2.1.0",
-    "rehype-parse": "^9.0.0",
+    "mdast-util-gfm": "^3.1.0",
+    "mdast-util-to-markdown": "^2.1.2",
+    "rehype-parse": "^9.0.1",
     "rehype-remark": "^10.0.0",
     "remark-squeeze-links": "^1.0.2",
-    "unified": "^11.0.4"
+    "unified": "^11.0.5"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^16.0.0",
@@ -43,6 +43,7 @@
     "eslint-config-prettier": "^10.1.1",
     "jest": "^29.7.0",
     "prettier": "^3.5.3",
+    "remark-stringify": "^11.0.0",
     "rollup": "^4.35.0",
     "rollup-plugin-typescript2": "^0.36.0",
     "ts-jest": "^29.2.6",
