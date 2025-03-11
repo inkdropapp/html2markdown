@@ -1,25 +1,19 @@
-import typescriptEslint from '@typescript-eslint/eslint-plugin'
-import typescriptParser from '@typescript-eslint/parser'
+import eslintTs from 'typescript-eslint'
 import prettier from 'eslint-config-prettier'
 
-export default [
+export default eslintTs.config(
+  eslintTs.configs.recommended,
   {
     ignores: ['lib', 'validators']
   },
-
   prettier,
-
   {
     languageOptions: {
-      parser: typescriptParser,
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module'
       },
       globals: {}
-    },
-    plugins: {
-      '@typescript-eslint': typescriptEslint
     },
     rules: {
       '@typescript-eslint/no-unused-vars': [
@@ -30,10 +24,11 @@ export default [
           caughtErrorsIgnorePattern: '^_'
         }
       ],
+      '@typescript-eslint/no-explicit-any': 0,
 
       'no-useless-escape': 0,
       'prefer-const': 2,
       'no-unused-vars': 0
     }
   }
-]
+)

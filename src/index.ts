@@ -21,7 +21,7 @@ export type Options = {
   baseURI?: string
 }
 
-function getConverter(opts?: Options) {
+export function getHTML2MarkdownConverter(opts?: Options) {
   const {
     toMdast: toMdastOptions = {},
     stringify: stringifyOptions = {},
@@ -29,7 +29,7 @@ function getConverter(opts?: Options) {
   } = opts || {}
 
   const remarkInit: Processor<HastRoot> = unified()
-    // @ts-ignore
+    // @ts-expect-error Cannot be correctly typed
     .data('toMarkdownExtensions', [gfmToMarkdown()])
     .use(rehypeParse)
   const remark = baseURI
@@ -37,7 +37,7 @@ function getConverter(opts?: Options) {
     : remarkInit
 
   const remarkParser = remark
-    // @ts-ignore
+    // @ts-expect-error Cannot be correctly typed
     .use(rehype2remark, {
       handlers: {
         pre: toMdastCodeBlock,
@@ -63,7 +63,7 @@ function getConverter(opts?: Options) {
 }
 
 export function html2Markdown(html: string, opts?: Options): string {
-  const c = getConverter(opts)
+  const c = getHTML2MarkdownConverter(opts)
   return c
     .processSync(html)
     .toString() // unescape task list checkbox
@@ -71,6 +71,6 @@ export function html2Markdown(html: string, opts?: Options): string {
 }
 
 export function parseMarkdown(html: string): HastRoot {
-  const c = getConverter()
+  const c = getHTML2MarkdownConverter()
   return c.parse(html)
 }

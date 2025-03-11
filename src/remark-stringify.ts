@@ -22,7 +22,7 @@ export const remarkStringify: Plugin<
         // passed by users.
         // https://github.com/remarkjs/remark/blob/618a9ad1d44aa106bd2a8c61ebf8589cfe97fa16/packages/remark-stringify/lib/index.js#L32
         //
-        // @ts-ignore
+        // @ts-expect-error: Cannot be correctly typed
         extensions: (this.data('toMarkdownExtensions') ||
           []) as ToMarkdownOptions['extensions']
       })
